@@ -3,6 +3,12 @@
   "identifier": "io.github.samcharles93.e22control",
   "version": "0.1.0",
   "out": "build",
+  "linux": {
+    "webview": false,
+    "maintainer": "Sam Catlow",
+    "comment": "Configure, scan and listen with an EBYTE E22-900T22U LoRa dongle",
+    "command": "e22-control"
+  },
   "ios": { "minimumSystemVersion": "17.0" },
   "android": { "minSdk": 26 }
 }
