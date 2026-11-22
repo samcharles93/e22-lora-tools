@@ -72,7 +72,9 @@ go tool mygo build      # build the app, .deb and .rpm into build/
 ```
 
 Its tabs are Settings, Scan (a chart of noise per channel), Listen (a packet
-log with a send box) and Help.
+log with a send box) and Help. Pick your region on the Settings tab: the
+channel field is marked when it leaves that region's licence-free band, and
+Scan defaults to the band.
 
 | Settings | Listen |
 |---|---|
@@ -80,9 +82,6 @@ log with a send box) and Help.
 
 The screenshots show sample data. Regenerate them with
 `CGO_ENABLED=0 go test -run TestScreenshots -screenshots .` in `gui/`.
- Pick your region on the Settings tab: the
-channel field is marked when it leaves that region's licence-free band, and
-Scan defaults to the band.
 
 ## Permissions
 
