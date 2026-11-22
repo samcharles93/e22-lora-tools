@@ -10,6 +10,10 @@ Open-source Linux tools for the **EBYTE E22-900T22U** USB LoRa dongle (SX1262,
 - **[PROTOCOL.md](docs/PROTOCOL.md)**: the dongle's configuration protocol,
   including behaviour the manual leaves out.
 
+<p align="center">
+  <img src="docs/screenshots/scan.png" width="760" alt="Scan tab: average noise per channel across 915-928 MHz, with one channel standing out">
+</p>
+
 Written in Go, with no cgo. Tested on Linux with an E22-900T22U running
 firmware 7434-2-11. Other E22 T-series UART modules use the same register map
 and probably work, but are untested.
@@ -68,7 +72,15 @@ go tool mygo build      # build the app, .deb and .rpm into build/
 ```
 
 Its tabs are Settings, Scan (a chart of noise per channel), Listen (a packet
-log with a send box) and Help. Pick your region on the Settings tab: the
+log with a send box) and Help.
+
+| Settings | Listen |
+|---|---|
+| <img src="docs/screenshots/settings.png" width="380" alt="Settings tab"> | <img src="docs/screenshots/listen.png" width="380" alt="Listen tab with received packets and RSSI"> |
+
+The screenshots show sample data. Regenerate them with
+`CGO_ENABLED=0 go test -run TestScreenshots -screenshots .` in `gui/`.
+ Pick your region on the Settings tab: the
 channel field is marked when it leaves that region's licence-free band, and
 Scan defaults to the band.
 

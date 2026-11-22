@@ -471,8 +471,8 @@ func (a *app) settings(c *ui.Context) {
 					ui.Textf(c, "%.3f MHz", e22.FrequencyMHz(byte(a.channel)))
 				})
 			}).Error(a.bandWarning())
-			ui.Field(c, "Air rate", func() { ui.Select(c, &a.air, e22.AirRates[2:]) })
-			ui.Field(c, "Power", func() { ui.Select(c, &a.power, powerLabels()) })
+			ui.Field(c, "Air rate", func() { ui.Select(c, &a.air, e22.AirRates[2:]).Width(160) })
+			ui.Field(c, "Power", func() { ui.Select(c, &a.power, powerLabels()).Width(160) })
 			ui.Field(c, "Address", func() { ui.NumberInput(c, &a.addr, 0, 65535, 1).Width(110) })
 			ui.Field(c, "Net ID", func() { ui.NumberInput(c, &a.netid, 0, 255, 1).Width(110) })
 			ui.Fieldset(c, "Options", func() {
@@ -556,7 +556,7 @@ func (a *app) listen(c *ui.Context) {
 		p := a.packets[len(a.packets)-1-i] // newest first
 		ui.Row(c).Gap(12).Padding(4, 8).Children(func() {
 			ui.Text(c, p.at.Format("15:04:05.000")).Font("monospace").TextColor(t.TextMuted).NoWrap()
-			ui.Text(c, strconv.QuoteToASCII(string(p.data))).Font("monospace").Grow(1)
+			ui.Text(c, strconv.QuoteToASCII(string(p.data))).Font("monospace").NoWrap().Grow(1)
 			ui.Text(c, strings.TrimSpace(fmt.Sprintf("% X", p.data))).Font("monospace").TextColor(t.TextMuted).Shrink(1)
 			if p.rssi != "" {
 				ui.Badge(c, p.rssi)
